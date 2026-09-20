@@ -111,10 +111,6 @@
 <header class="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 pb-2 pt-[max(1.25rem,env(safe-area-inset-top))] sm:px-6">
   <h1 class="text-lg font-semibold tracking-tight">Catatan keuangan</h1>
   <div class="flex items-center gap-2">
-    <button id="btnR2" type="button" class="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-sm text-mute transition-colors hover:text-ink">
-      <span id="r2Dot" class="h-2 w-2 rounded-full bg-mute/40"></span>
-      <span id="r2Label">Atur R2</span>
-    </button>
     <div class="hidden sm:block">
       <button id="btnAddTop" type="button" class="btn btn-primary">
         <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg>
@@ -286,67 +282,6 @@
   </form>
 </dialog>
 
-<!-- Dialog: pengaturan R2 & data -->
-<dialog id="dlgSettings" class="fixed inset-x-0 bottom-0 top-auto m-0 max-h-[92dvh] w-full max-w-none overflow-y-auto rounded-t-2xl border border-line bg-surface p-0 text-ink sm:inset-0 sm:m-auto sm:h-fit sm:max-w-lg sm:rounded-2xl">
-  <div class="flex items-center justify-between px-5 pt-5">
-    <h2 class="text-base font-semibold">Cloudflare R2 dan data</h2>
-    <button type="button" data-close aria-label="Tutup" class="rounded-md p-1.5 text-mute hover:text-ink">
-      <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>
-    </button>
-  </div>
-
-  <div class="space-y-7 px-5 pb-6 pt-4 text-sm">
-    <section>
-      <h3 class="font-medium">Koneksi Cloudflare R2</h3>
-      <p class="mt-1 text-mute">Gambar bukti diunggah ke bucket R2 kamu. Pastikan bucket sudah diatur akses publiknya.</p>
-
-      <label for="sR2Endpoint" class="mb-1 mt-4 block text-mute">R2 Endpoint</label>
-      <input id="sR2Endpoint" type="text" autocomplete="off" spellcheck="false" placeholder="https://xxx.r2.cloudflarestorage.com" class="field">
-
-      <label for="sR2Bucket" class="mb-1 mt-3 block text-mute">Bucket Name</label>
-      <input id="sR2Bucket" type="text" autocomplete="off" spellcheck="false" placeholder="nama-bucket" class="field">
-
-      <label for="sR2PublicUrl" class="mb-1 mt-3 block text-mute">Public URL</label>
-      <input id="sR2PublicUrl" type="text" autocomplete="off" spellcheck="false" placeholder="https://pub-xxx.r2.dev atau custom domain" class="field">
-
-      <label for="sR2AccessKey" class="mb-1 mt-3 block text-mute">Access Key ID</label>
-      <input id="sR2AccessKey" type="text" autocomplete="off" spellcheck="false" placeholder="xxxxxxxx" class="field">
-
-      <label for="sR2SecretKey" class="mb-1 mt-3 block text-mute">Secret Access Key</label>
-      <input id="sR2SecretKey" type="password" autocomplete="off" spellcheck="false" placeholder="xxxxxxxx" class="field">
-
-      <div class="mt-4 flex flex-wrap items-center gap-2">
-        <button type="button" id="sSave" class="btn btn-primary">Simpan konfigurasi</button>
-        <button type="button" id="sDisconnect" hidden class="btn">Hapus konfigurasi</button>
-        <span id="sStatus" class="text-mute"></span>
-      </div>
-      <p id="sMsg" class="mt-2 min-h-[1.25rem]" role="status"></p>
-
-      <details class="mt-2 rounded-lg border border-line px-3 py-2">
-        <summary class="cursor-pointer font-medium">Cara mendapatkan kredensial R2</summary>
-        <ol class="mt-2 list-decimal space-y-1.5 pl-5 text-mute">
-          <li>Buka <span class="text-ink">dash.cloudflare.com</span> → R2 Object Storage.</li>
-          <li>Buat bucket baru atau gunakan bucket yang sudah ada.</li>
-          <li>Di tab <span class="text-ink">Settings</span>, aktifkan <span class="text-ink">Public Access</span> (R2.dev subdomain atau custom domain).</li>
-          <li>Di tab <span class="text-ink">API Access</span>, buat <span class="text-ink">S3 API Token</span> (bukan Management API).</li>
-          <li>Salin <span class="text-ink">Access Key ID</span> dan <span class="text-ink">Secret Access Key</span>.</li>
-          <li>Endpoint ada di bawah judul <span class="text-ink">S3 API</span> di halaman token.</li>
-        </ol>
-      </details>
-    </section>
-
-    <section class="border-t border-line pt-6">
-      <h3 class="font-medium">Data pengeluaran</h3>
-      <p class="mt-1 text-mute">Catatan tersimpan di browser ini. Buat cadangan berkala, terutama sebelum membersihkan data browser.</p>
-      <div class="mt-3 flex flex-wrap gap-2">
-        <button type="button" id="sExport" class="btn">Cadangkan (JSON)</button>
-        <input id="sImport" type="file" accept=".json,application/json" class="peer sr-only">
-        <label for="sImport" class="btn cursor-pointer peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-accent">Pulihkan dari JSON</label>
-      </div>
-    </section>
-  </div>
-</dialog>
-
 <!-- Dialog: lihat bukti -->
 <dialog id="dlgProof" class="fixed inset-x-0 bottom-0 top-auto m-0 max-h-[92dvh] w-full max-w-none overflow-y-auto rounded-t-2xl border border-line bg-surface p-4 text-ink sm:inset-0 sm:m-auto sm:h-fit sm:max-w-2xl sm:rounded-2xl">
   <div class="flex items-center justify-between gap-3">
@@ -373,7 +308,7 @@
     R2_PUBLIC_URL: ''
   };
   const CONFIG = { ...DEFAULT_CONFIG, ...(window.R2_CONFIG || {}) };
-  const KEY = { data: 'ck_expenses_v1', r2: 'ck_r2_config', cat: 'ck_last_cat' };
+  const KEY = { data: 'ck_expenses_v1', cat: 'ck_last_cat' };
 
   const CATS = [
     { id: 'makan',      name: 'Makan & minum',     color: '#8FAE9E' },
@@ -761,13 +696,7 @@
         ? `<div class="pt-5 text-center"><button type="button" data-action="more" class="btn">Tampilkan lebih banyak</button></div>` : '');
   }
   /* ========== R2 S3 Upload (SigV4) ========== */
-  const r2Config = () => {
-    const base = { ...DEFAULT_CONFIG, ...(window.R2_CONFIG || {}) };
-    try {
-      const saved = JSON.parse(ls.get(KEY.r2) || 'null');
-      return saved ? { ...base, ...saved } : base;
-    } catch { return base; }
-  };
+  const r2Config = () => ({ ...DEFAULT_CONFIG, ...(window.R2_CONFIG || {}) });
 
   const r2Connected = () => {
     const c = r2Config();
@@ -891,47 +820,6 @@
     if (err.status === 403) return 'Akses ditolak oleh R2 (403). Periksa Access Key dan Secret Key.';
     if (err.status === 404) return 'Bucket atau endpoint tidak ditemukan (404).';
     return 'Gagal mengunggah: ' + (err.message || 'kesalahan tidak diketahui');
-  }
-
-  function renderR2() {
-    const ok = r2Connected();
-    $('#r2Dot').className = 'h-2 w-2 rounded-full ' + (ok ? 'bg-good' : 'bg-mute/40');
-    $('#r2Label').textContent = ok ? 'R2 terhubung' : 'Atur R2';
-    $('#sStatus').textContent = ok ? 'Terhubung' : '';
-    $('#sDisconnect').hidden = !ok;
-  }
-
-  function sMsg(text, kind) {
-    const el = $('#sMsg');
-    el.textContent = text || '';
-    el.className = 'mt-2 min-h-[1.25rem] ' + (kind === 'error' ? 'text-warn' : kind === 'ok' ? 'text-good' : 'text-mute');
-  }
-
-  function saveR2Config() {
-    const endpoint = $('#sR2Endpoint').value.trim().replace(/\/+$/, '');
-    const bucket = $('#sR2Bucket').value.trim();
-    const publicUrl = $('#sR2PublicUrl').value.trim();
-    const accessKey = $('#sR2AccessKey').value.trim();
-    const secretKey = $('#sR2SecretKey').value.trim();
-    if (!endpoint || !bucket || !accessKey || !secretKey) {
-      sMsg('Semua field wajib diisi.', 'error');
-      return;
-    }
-    try { new URL(endpoint); } catch { sMsg('Endpoint URL tidak valid.', 'error'); return; }
-    ls.set(KEY.r2, JSON.stringify({ R2_ENDPOINT: endpoint, R2_BUCKET: bucket, R2_PUBLIC_URL: publicUrl, R2_ACCESS_KEY: accessKey, R2_SECRET_KEY: secretKey }));
-    sMsg('Konfigurasi R2 tersimpan.', 'ok');
-    renderR2();
-  }
-
-  function disconnectR2() {
-    ls.del(KEY.r2);
-    sMsg('Konfigurasi R2 dihapus.');
-    renderR2();
-    $('#sR2Endpoint').value = '';
-    $('#sR2Bucket').value = '';
-    $('#sR2PublicUrl').value = '';
-    $('#sR2AccessKey').value = '';
-    $('#sR2SecretKey').value = '';
   }
 
   /* ========== Form pengeluaran ========== */
@@ -1136,25 +1024,6 @@
     download(`pengeluaran_${r.from}_${r.to}.csv`, 'text/csv;charset=utf-8', csv);
   }
 
-  function exportJson() {
-    download(`catatan-keuangan_${todayStr()}.json`, 'application/json', JSON.stringify({ version: 1, exportedAt: new Date().toISOString(), expenses }, null, 2));
-  }
-
-  async function importJson(file) {
-    try {
-      const data = JSON.parse(await file.text());
-      const arr = (Array.isArray(data) ? data : data.expenses || []).map(normalize).filter(Boolean);
-      if (!arr.length) { sMsg('Tidak ada data valid di file tersebut.', 'error'); return; }
-      const map = new Map(expenses.map(e => [e.id, e]));
-      arr.forEach(e => map.set(e.id, e));
-      expenses = [...map.values()];
-      persist(); render();
-      sMsg(`${arr.length} catatan dipulihkan.`, 'ok');
-    } catch {
-      sMsg('File tidak bisa dibaca. Pastikan itu file cadangan JSON dari halaman ini.', 'error');
-    }
-  }
-
   /* ========== Event ========== */
   function init() {
     const catOptions = CATS.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join('');
@@ -1224,27 +1093,8 @@
       if (form.blob) startUpload();
     });
 
-    // Pengaturan R2 & data
-    $('#btnR2').addEventListener('click', () => {
-      const c = r2Config();
-      $('#sR2Endpoint').value = c.R2_ENDPOINT || '';
-      $('#sR2Bucket').value = c.R2_BUCKET || '';
-      $('#sR2PublicUrl').value = c.R2_PUBLIC_URL || '';
-      $('#sR2AccessKey').value = c.R2_ACCESS_KEY || '';
-      $('#sR2SecretKey').value = c.R2_SECRET_KEY || '';
-      sMsg('');
-      renderR2();
-      $('#dlgSettings').showModal();
-    });
-    $('#sSave').addEventListener('click', saveR2Config);
-    $('#sDisconnect').addEventListener('click', disconnectR2);
-    $('#sExport').addEventListener('click', exportJson);
-    $('#sImport').addEventListener('change', e => { const f = e.target.files[0]; e.target.value = ''; if (f) importJson(f); });
-
-    setInterval(renderR2, 30000);
     syncInputs();
     setPreset('month');
-    renderR2();
   }
 
   init();
